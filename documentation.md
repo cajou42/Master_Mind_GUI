@@ -14,23 +14,23 @@ Louis MERLAUD
 - source
 
 ## Présentation du projet : 
-ce projet vise à faire un "master mind" en java, le master est un jeu dans lequel un joueur choisie une combinaison de quatre couleur parmi six donnée, un autre joueur doit alors réproduire cette séquence de couleur avec un certain nombre d'essaie.
-dans le programme la combinaison de départ est généré aléatoirement.
+ce projet vise à faire un "master mind" en java, le master est un jeu dans lequel un joueur choisie une combinaison de quatre couleurs parmi six données, un autre joueur doit alors reproduire cette séquence de couleur avec un certain nombre d'essais.
+Dans le programme la combinaison de départ est généré aléatoirement.
 
 le projet contien deux versions du jeu : une version qui ce joue avec le terminal et une autre qui ce joue depuis une interface graphique.
 
-le projet contient les packets suivant :
-- le packet Moteur qui contient les fonctions de la version terminal
-- le packet Test qui permet de lancer et de tester la version terminal
-- le packet GUI qui contient les fonctions et permet de lancer la version graphique
-- le packet Image qui contient des images utiliser dans la versiongraphique
+le projet contient les paquets suivant :
+- le paquet Moteur qui contient les fonctions de la version terminal
+- le paquet Test qui permet de lancer et de tester la version terminal
+- le paquet GUI qui contient les fonctions et permet de lancer la version graphique
+- le paquet Image qui contient des images utilisées dans la version graphique
 
-ici la combinaison départ sera toujours montré au démarage des fonctions afin simplifier les tests
+ici la combinaison départ sera toujours montré au démarage du programme afin simplifier les tests
 
 ## version terminal
 
 **initialisation**
-on commence déjà par initialisé les variables `m_couleur` et `m_tentative` dans la classe `Test.java`,
+On commence déjà par initialiser les variables `m_couleur` et `m_tentative` dans la classe `Test.java`,
 la première permet d'initialiser la combinaison de départ et la seconde le nombre de tentative du joueur
 
 ```
@@ -51,11 +51,11 @@ public static ArrayList<String> ChoixDeDepart(String[] couleur) {
 		return tab; 
 	}
 ```
-Dans cette fonction on génére un nombre aléatoire compris entre 0 et 5 et on récupère une valeur du tableau passé en paramètre (dans notre cas se sera `m_couleur`) à l'index de ce nombre, le l'ArrayList  retourné sera notre combinaison de départ.
+Dans cette fonction on génére un nombre aléatoire compris entre 0 et 5 et on récupère une valeur du tableau passé en paramètre (dans notre cas se sera `m_couleur`) à l'index de ce nombre, l'ArrayList retourné sera notre combinaison de départ.
 
 **tour du joueur**
 
-pour que le joueur fasse son choix de combinaison, on va utiliser la fonction `TourJoueur` : 
+Pour que le joueur fasse son choix de combinaison, on va utiliser la fonction `TourJoueur` : 
 ```
 	public ArrayList<String> TourJoueur() {
 		ArrayList<String> tab = new ArrayList<String>();
@@ -81,8 +81,8 @@ pour que le joueur fasse son choix de combinaison, on va utiliser la fonction `T
 	}
 ```
 
-cette fonction va retourner un ArrayList contenant la combinaison du joueur, tant que l'ArrayList n'a pas une taille de 4,
-le joueur est inviter à entrer une couleur parmi celle autorisé directement dans le terminal, on récupère cette information grâce à la ligne `String line = reader.readLine();`, puis ensuite on ajoute ce résultat dans l'ArrayList que sera retourné.
+Cette fonction va retourner un ArrayList contenant la combinaison du joueur, tant que l'ArrayList n'a pas une taille de 4,
+le joueur est invité à entrer une couleur parmi celle autorisé directement dans le terminal, on récupère cette information grâce à la ligne `String line = reader.readLine();`, puis ensuite on ajoute ce résultat dans l'ArrayList qui sera retourné.
 
 **Vérification**
 
@@ -120,8 +120,8 @@ on compare la combinaison du joueur avec celle de départ grâce à la fonction 
 	}
 ```
 
-Cette fonction vérifie si les index de la combinaison de départ (ici `tab_depart`) et celles de la combinaison du joueur (`tab_joueur`) sont identique, si c'est le cas la variable `bon` s'incrémente, dans le cas échéant on regarde si la combinaison de départ contient quand même la couleur entré par le joueur à cette index grâce à la fonction `contains`, dans ce cas la variable `bon_mais_pas_a_la_bonne_place` s'incrémente.
-A la fin du programe on affiche au joueur son résultat et on décrément la variable tentative passé en paramètre (dans notre cas il s'agit de la variable `m_tentative`) si cette variable atteint 0, le joueur perd.
+Cette fonction vérifie si les index de la combinaison de départ (ici `tab_depart`) et ceux de la combinaison du joueur (`tab_joueur`) sont identiques, si c'est le cas, la variable `bon` s'incrémente, dans le cas échéant on regarde si la combinaison de départ contient quand même la couleur entré par le joueur à cette index grâce à la fonction `contains`, dans ce cas la variable `bon_mais_pas_a_la_bonne_place` s'incrémente.
+À la fin du programe on affiche le résultat du joueur, et si la combinaison est fausse, on décrémente la variable tentative passé en paramètre (dans notre cas il s'agit de la variable `m_tentative`) si cette variable atteint 0, le joueur perd.
 
 voici à quoi ressemble la fonction de test : 
 ```
@@ -140,8 +140,8 @@ voici à quoi ressemble la fonction de test :
 
 **initialisation**
 dans `Interface.java` : 
-comme précédement on initialise les variables `couleur` et `m_tentative`, on définie aussi la variable `tab_dep`qui nous permet de générer la combinaison de départ grâce à la fonction `ChoixDeDepart` utiliser précédement, on initialise aussi une variable `i` qui servira de compteur pour plus tard
-on créer en amont le boutons et les label que l'on va utiliser dans l'interface
+Comme précédement on initialise les variables `couleur` et `m_tentative`, on définie aussi la variable `tab_dep`qui nous permet de générer la combinaison de départ grâce à la fonction `ChoixDeDepart` utiliser précédement, on initialise aussi une variable `i` qui servira de compteur pour plus tard.
+On créer en amont les boutons et les labels que l'on va utiliser dans l'interface
 ```
 	private JButton b1;
 	private JButton b2;
@@ -158,7 +158,7 @@ on créer en amont le boutons et les label que l'on va utiliser dans l'interface
 	private ArrayList<String> tab_dep = Moteur.ChoixDeDepart(couleur);
 ```
 
-on créer l'interface avec le constructeur : 
+On créer l'interface avec le constructeur : 
 ```
 public Interface() {
 		setSize(800,400);
@@ -198,9 +198,9 @@ public Interface() {
 	}
 ```
 
-dans notre constructeur on fait deux pannel : le `panelData` qui contien les boutons pour entrer les combinaisons et le `panelInfo` qui va nous permettre de transmettre les résultats au joueur, et aussi permettre de valider son choix
+Dans notre constructeur on fait deux pannels : le `panelData` qui contient les boutons pour entrer les combinaisons et le `panelInfo` qui va nous permettre de transmettre les résultats au joueur, et aussi permettre de valider son choix
 
-on peut lancer le programe grâce à la fonction `main` : 
+On peut lancer le programme grâce à la fonction `main` : 
 ```
 	public static void main(String[] args) {
 		Interface Laucher = new Interface();
@@ -211,7 +211,7 @@ on peut lancer le programe grâce à la fonction `main` :
 
 **intéraction avec le joueur**
 
-pour que le joueur puisse entrer ses choix, on associe un événement aux boutons avec l'`actionPerformed` : 
+Pour que le joueur puisse entrer ses choix, on associe un événement aux boutons avec l'`actionPerformed` : 
 ```
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == confirm) {
@@ -224,7 +224,7 @@ pour que le joueur puisse entrer ses choix, on associe un événement aux bouton
 		}
 	}
 ```
-intéressons nous d'abord au cas ou le boutons pressé n'est pas `confirm`, dans ce cas présent la fonction `roulement` sera appelé :
+Intéressons nous d'abord au cas ou le boutons pressé n'est pas `confirm`, dans ce cas présent la fonction `roulement` sera appelée :
 ```
 	public void roulement(Object object, String[] couleur) {
 		((AbstractButton) object).setText(couleur [i]);
@@ -262,8 +262,8 @@ intéressons nous d'abord au cas ou le boutons pressé n'est pas `confirm`, dans
 		
 	}
 ```
-Cette fonction va permettre un roulement de couleur à chaque apuis sur le bouton, pour cela on écrit la nom de la couleur dans le bouton (`((AbstractButton) object).setText(couleur [i]);`), on utilise le compteur `i` initialisé plus tôt pour parcourir le tableau contenant les couleurs, ce compteur est remis à zéro s'il ateint six afin d'évité de sortir du tableau et d'avoir une erreur.
-on utilise également un `case` pour changer la couleur du bouton, pour la couleur choisie, pour ce faire on utilise `setIcon` qui va nous permettre de mettre une image dans le bouton (les images sont dans le packet `Image`)
+Cette fonction va permettre un roulement de couleur à chaque apuis sur le bouton, pour cela on écrit le nom de la couleur dans le bouton (`((AbstractButton) object).setText(couleur [i]);`), on utilise le compteur `i` initialisé plus tôt pour parcourir le tableau contenant les couleurs, ce compteur est remis à zéro s'il atteint six afin d'évité de sortir du tableau et d'avoir une erreur.
+On utilise également un `case` pour changer la couleur du bouton pour la couleur choisie, pour ce faire on utilise `setIcon` qui va nous permettre de mettre une image dans le bouton (les images sont dans le paquet `Image`)
 
 Maitenant regardons le bouton `confirm`, ce bouton permet de confirmer le choix du joueur et de lancer les vérifications;
 deux fonctions sont appelées lors d'un appuie : 
@@ -280,9 +280,9 @@ la fonction `recup_value` :
 		return tab;
 	}
 ```
-Cette fonction permet de simplement récupérer les choix du joueur via le nom des couleurs inscrit dans les boutons (ils ne sont visible à cause des images, mais ils sont bien là) et de les mettres dans un Arraylist
+Cette fonction permet de simplement récupérer les choix du joueur via le nom des couleurs inscrit dans les boutons (ils ne sont visible à cause des images, mais ils sont bien là) et de les mettrent dans un Arraylist.
 
-et la fonction `Verification_GUI` : 
+Et la fonction `Verification_GUI` : 
 ```
 public void Verification_GUI(ArrayList<String> tab_joueur, ArrayList<String> tab_depart){
 		int bon = 0;
@@ -313,10 +313,10 @@ public void Verification_GUI(ArrayList<String> tab_joueur, ArrayList<String> tab
 	}
 
 ```
-Cette fonction est la même que la fonction `Verification` de la version terminal, mais est adaptée à l'interface graphique, on affiche notament les résultats en bas de la fenêtre grâce à des Labels situés dans le `panelInfo`, si le joueur gagne ou perd une pop-up viendra l'en informer (`JOptionPane.showMessageDialog`)
+Cette fonction est la même que la fonction `Verification` de la version terminal, mais est adaptée pour l'interface graphique, on affiche notament les résultats en bas de la fenêtre grâce à des Labels situés dans le `panelInfo`, si le joueur gagne ou perd, une pop-up viendra l'en informer (`JOptionPane.showMessageDialog`)
 
 ## point à améliorer sur le projet
-- certain bug encore, notament sur la fonction de vérification qui peut faire des sienne si le choix de départ contient plusieurs fois la même couleur
+- certain bug encore, notament sur la fonction de vérification qui peut faire des siennes si le choix de départ contient plusieurs fois la même couleur
 
 - manque de gestion d'erreur 
 
